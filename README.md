@@ -18,7 +18,7 @@ _description_
     "anitabi-mcp-server": {
       "command": "node",
       "args": [
-        "C:\\Users\\11762\\@qiyuor2\\anitabi-mcp-server\\dist\\index.mjs"
+        "C:\\Users\\11762\\@qiyuor2\\anitabi-mcp-server\\dist\\index.cjs"
       ]
     }
   }

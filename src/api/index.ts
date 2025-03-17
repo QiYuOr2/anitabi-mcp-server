@@ -15,7 +15,7 @@ const headers = {
  * @param subjectID 作品 id
  * @returns 对应巡礼地标信息
  */
-export async function getLiteBangumi(subjectID: number): Promise<z.infer<typeof LiteBangumiSchema>> {
+export async function getLiteBangumi(subjectID: number | string): Promise<z.infer<typeof LiteBangumiSchema>> {
   const url = `${ANITABI_BASE_URL}bangumi/${subjectID}/lite`
 
   const response = await fetch(url, { headers })

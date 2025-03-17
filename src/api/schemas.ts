@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 export const LitePointSchema = z.object({
   id: z.string(),
-  cn: z.string(),
+  cn: z.string().optional(),
   name: z.string(),
   image: z.string(),
   ep: z.number(),
@@ -12,9 +12,9 @@ export const LitePointSchema = z.object({
 
 export const LiteBangumiSchema = z.object({
   id: z.number(),
-  cn: z.string(),
+  cn: z.string().optional(),
   title: z.string(),
-  city: z.string(),
+  city: z.string().optional(),
   cover: z.string(),
   color: z.string(),
   geo: z.tuple([z.number(), z.number()]),

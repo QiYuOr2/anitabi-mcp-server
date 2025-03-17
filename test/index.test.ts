@@ -1,7 +1,7 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect } from 'vitest'
+import { getLiteBangumi } from '../src/api'
 
-describe('should', () => {
-  it('exported', () => {
-    expect(1).toEqual(1)
-  })
+describe('[getLiteBangumi] response success', async () => {
+  const result = await getLiteBangumi('428735')
+  expect(result.id).toEqual(428735)
 })
