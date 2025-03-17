@@ -30,7 +30,7 @@ export async function getLiteBangumi(subjectID: number | string): Promise<z.infe
  * @param haveImage 筛选含图地标
  * @returns 对应巡礼地标详情信息
  */
-export async function getPointDetails(subjectID: number, haveImage: boolean = true): Promise<z.infer<typeof PointDetailListSchema>> {
+export async function getPointDetails(subjectID: number | string, haveImage: boolean = true): Promise<z.infer<typeof PointDetailListSchema>> {
   const url = `${ANITABI_BASE_URL}bangumi/${subjectID}/points/detail`
 
   const response = await fetch(`${url}${haveImage ? `?haveImage=${haveImage}` : ''}`, { headers })

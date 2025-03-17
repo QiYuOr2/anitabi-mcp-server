@@ -28,12 +28,12 @@ export const LiteBangumiSchema = z.object({
 export const PointDetailSchema = z.object({
   id: z.string(),
   name: z.string(),
-  image: z.string(),
-  ep: z.number(),
-  s: z.number(),
+  image: z.string().optional(),
+  ep: z.union([z.string(), z.number()]).optional(),
+  s: z.union([z.string(), z.number()]).optional().nullable(),
   geo: z.tuple([z.number(), z.number()]),
-  origin: z.string(),
-  originURL: z.string(),
+  origin: z.string().optional(),
+  originURL: z.string().optional(),
 })
 
 export const PointDetailListSchema = z.array(PointDetailSchema)

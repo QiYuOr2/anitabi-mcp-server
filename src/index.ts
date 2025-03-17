@@ -1,7 +1,7 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod'
-import { getLiteBangumi, searchBangumiSubject } from './api'
+import { getLiteBangumi, getPointDetails, searchBangumiSubject } from './api'
 import { objectToXML } from './utils'
 
 const server = new McpServer({
@@ -26,8 +26,8 @@ server.tool(
 )
 
 server.tool(
-  'get_bangumi_stage_by_id',
-  '根据 bangumi id 获取巡礼地点信息',
+  'get_bangumi_stage_lite_by_id',
+  '根据 bangumi 作品 id 获取巡礼地点的轻量信息',
   { id: z.string() },
   async ({ id }) => {
     const result = await getLiteBangumi(id)
@@ -35,7 +35,23 @@ server.tool(
     return {
       content: [{
         type: 'text',
-        text: objectToXML(result),
+        text: objectToXML({ ...result, more: `https://anitabi.cn/map?bangumiId=${id}` }),
+      }],
+    }
+  },
+)
+
+server.tool(
+  'get_bangumi_stage_point_detail_by_id',
+  '根据 Bangumi 作品 id 获取对应巡礼地标详情信息',
+  { id: z.string() },
+  async ({ id }) => {
+    const result = await getPointDetails(id)
+
+    return {
+      content: [{
+        type: 'text',
+        text: objectToXML({ ...result, inMap: `https://anitabi.cn/map?bangumiId=${id}` }),
       }],
     }
   },

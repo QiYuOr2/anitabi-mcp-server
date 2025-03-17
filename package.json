@@ -1,7 +1,7 @@
 {
-  "name": "mcp-anitabi-server",
+  "name": "@qiyuro2/anitabi-mcp-server",
   "type": "module",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "packageManager": "pnpm@10.6.2",
   "description": "_description_",
   "author": "Anthony Fu <anthonyfu117@hotmail.com>",
@@ -12,7 +12,7 @@
     "url": "git+https://github.com/QiYuOr2/mcp-anitabi-server.git"
   },
   "bugs": "https://github.com/QiYuOr2/mcp-anitabi-server/issues",
-  "keywords": [],
+  "keywords": ["mcp server"],
   "sideEffects": false,
   "exports": {
     ".": {

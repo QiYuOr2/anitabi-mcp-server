@@ -1,12 +1,25 @@
-# mcp-anitabi-server
+# anitabi-mcp-server
 
-_description_
+- [anitabi 巡礼地图](https://anitabi.cn/map)
+- [anitabi 文档](https://github.com/anitabi/anitabi.cn-document)
 
 ## 使用方式
 
 ### NPX
 
-### Docker
+```json
+{
+  "mcpServers": {
+    "anitabi-mcp-server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@qiyuor2/anitabi-mcp-server"
+      ]
+    }
+  }
+}
+```
 
 ## 本地开发
 
