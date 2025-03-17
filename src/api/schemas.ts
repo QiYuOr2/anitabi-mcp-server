@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 export const LitePointSchema = z.object({
   id: z.string(),
-  cn: z.string().optional(),
+  cn: z.string().optional().nullable(),
   name: z.string(),
   image: z.string(),
   ep: z.number(),
@@ -12,9 +12,9 @@ export const LitePointSchema = z.object({
 
 export const LiteBangumiSchema = z.object({
   id: z.number(),
-  cn: z.string().optional(),
+  cn: z.string().optional().nullable(),
   title: z.string(),
-  city: z.string().optional(),
+  city: z.string().optional().nullable(),
   cover: z.string(),
   color: z.string(),
   geo: z.tuple([z.number(), z.number()]),
@@ -29,7 +29,7 @@ export const PointDetailSchema = z.object({
   id: z.string(),
   name: z.string(),
   image: z.string().optional(),
-  ep: z.union([z.string(), z.number()]).optional(),
+  ep: z.union([z.string(), z.number()]).optional().nullable(),
   s: z.union([z.string(), z.number()]).optional().nullable(),
   geo: z.tuple([z.number(), z.number()]),
   origin: z.string().optional(),
@@ -51,7 +51,7 @@ export const BangumiSubjectSchema = z.object({
   url: z.string(),
   type: z.number(),
   name: z.string(),
-  name_cn: z.string(),
+  name_cn: z.string().optional().nullable(),
   summary: z.string(),
   air_date: z.string(),
   air_weekday: z.number(),

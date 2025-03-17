@@ -1,10 +1,10 @@
 {
-  "name": "@qiyuro2/anitabi-mcp-server",
+  "name": "@qiyuor2/anitabi-mcp-server",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "packageManager": "pnpm@10.6.2",
   "description": "_description_",
-  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "author": "QiYuOr2 <qiyuor2@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/QiYuOr2/mcp-anitabi-server#readme",
   "repository": {
@@ -21,9 +21,12 @@
     },
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
+  "bin": {
+    "anitabi-mcp-server": "./dist/index.cjs"
+  },
   "files": [
     "dist"
   ],

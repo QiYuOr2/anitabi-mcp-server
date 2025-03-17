@@ -38,6 +38,12 @@
 }
 ```
 
+### 发布
+
+```bash
+pnpm publish --access=public
+```
+
 ## License
 
 [MIT](./LICENSE) License © [QiYuOr2](https://github.com/QiYuOr2)
