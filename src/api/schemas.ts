@@ -24,6 +24,7 @@ export const LiteBangumiSchema = z.object({
   pointsLength: z.number(),
   imagesLength: z.number(),
 })
+export type LiteBangumiDTO = z.infer<typeof LiteBangumiSchema>
 
 export const PointDetailSchema = z.object({
   id: z.string(),
@@ -37,6 +38,7 @@ export const PointDetailSchema = z.object({
 })
 
 export const PointDetailListSchema = z.array(PointDetailSchema)
+export type PointDetailListDTO = z.infer<typeof PointDetailListSchema>
 
 const BangumiSubjectImagesSchema = z.object({
   large: z.string(),
@@ -62,3 +64,4 @@ export const BangumiSearchResponseSchema = z.object({
   results: z.number(),
   list: z.array(BangumiSubjectSchema),
 })
+export type BangumiSearchResponseDTO = z.infer<typeof BangumiSearchResponseSchema>

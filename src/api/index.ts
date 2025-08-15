@@ -1,4 +1,4 @@
-import type { z } from 'zod'
+import type { BangumiSearchResponseDTO, LiteBangumiDTO, PointDetailListDTO } from './schemas'
 import { ANITABI_BASE_URL, BANGUMI_BASE_URL, UA } from '../constants'
 import { BangumiSearchResponseSchema, LiteBangumiSchema, PointDetailListSchema } from './schemas'
 
@@ -12,7 +12,7 @@ const headers = {
  * @param subjectID 作品 id
  * @returns 对应巡礼地标信息
  */
-export async function getLiteBangumi(subjectID: number | string): Promise<z.infer<typeof LiteBangumiSchema>> {
+export async function getLiteBangumi(subjectID: number | string): Promise<LiteBangumiDTO> {
   const url = `${ANITABI_BASE_URL}bangumi/${subjectID}/lite`
 
   const response = await fetch(url, { headers })
@@ -27,11 +27,15 @@ export async function getLiteBangumi(subjectID: number | string): Promise<z.infe
  * @param haveImage 筛选含图地标
  * @returns 对应巡礼地标详情信息
  */
-export async function getPointDetails(subjectID: number | string, haveImage: boolean = true): Promise<z.infer<typeof PointDetailListSchema>> {
+export async function getPointDetails(subjectID: number | string, haveImage: boolean = true): Promise<PointDetailListDTO> {
   const url = `${ANITABI_BASE_URL}bangumi/${subjectID}/points/detail`
 
   const response = await fetch(`${url}${haveImage ? `?haveImage=${haveImage}` : ''}`, { headers })
-  const result = await response.json()
+  const result = await response.json() as PointDetailListDTO
+
+  if (result.length === 0) {
+    throw new Error('未找到该作品的地标，请检查 subjectID 是否正确')
+  }
 
   return PointDetailListSchema.parse(result)
 }
@@ -50,7 +54,7 @@ export function getAnitabiSubjectURLById(id: number): string {
  * @param keyword 关键词
  * @returns 匹配的条目列表
  */
-export async function searchBangumiSubject(keyword: string): Promise<z.infer<typeof BangumiSearchResponseSchema>> {
+export async function searchBangumiSubject(keyword: string): Promise<BangumiSearchResponseDTO> {
   const url = `${BANGUMI_BASE_URL}search/subject/${encodeURIComponent(keyword)}`
 
   const params = new URLSearchParams({

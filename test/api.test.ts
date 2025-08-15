@@ -11,4 +11,10 @@ describe('request test', () => {
     const result = await getPointDetails('428735')
     expect(result.length).not.toEqual(0)
   })
+
+  it('[getPonitDetails] empty response', async () => {
+    await expect(getPointDetails('383803'))
+      .rejects
+      .toThrow('未找到该作品的地标，请检查 subjectID 是否正确')
+  })
 })
