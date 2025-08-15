@@ -3,12 +3,14 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod'
+import pkg from '../package.json'
 import { getLiteBangumi, getPointDetails, searchBangumiSubject } from './api'
-import { objectToXML } from './utils'
+import { ANITABI_MAP_URL } from './constants'
+import { objectToXML, safeRequest } from './utils'
 
 const server = new McpServer({
-  name: 'Anitabi MCP Server',
-  version: '1.0.0',
+  name: pkg.displayName,
+  version: pkg.version,
 })
 
 server.tool(
@@ -16,7 +18,7 @@ server.tool(
   '根据关键词搜索对应的 bangumi 条目 id',
   { keyword: z.string() },
   async ({ keyword }) => {
-    const result = await searchBangumiSubject(keyword)
+    const result = await safeRequest(searchBangumiSubject(keyword))
 
     return {
       content: [{
@@ -32,12 +34,12 @@ server.tool(
   '根据 bangumi 作品 id 获取巡礼地点的轻量信息',
   { id: z.string() },
   async ({ id }) => {
-    const result = await getLiteBangumi(id)
+    const result = await safeRequest(getLiteBangumi(id))
 
     return {
       content: [{
         type: 'text',
-        text: objectToXML({ ...result, more: `https://anitabi.cn/map?bangumiId=${id}` }),
+        text: objectToXML({ ...result, more: `${ANITABI_MAP_URL}?bangumiId=${id}` }),
       }],
     }
   },
@@ -48,12 +50,12 @@ server.tool(
   '根据 Bangumi 作品 id 获取对应巡礼地标详情信息',
   { id: z.string() },
   async ({ id }) => {
-    const result = await getPointDetails(id)
+    const result = await safeRequest(getPointDetails(id))
 
     return {
       content: [{
         type: 'text',
-        text: objectToXML({ ...result, inMap: `https://anitabi.cn/map?bangumiId=${id}` }),
+        text: objectToXML({ ...result, inMap: `${ANITABI_MAP_URL}?bangumiId=${id}` }),
       }],
     }
   },

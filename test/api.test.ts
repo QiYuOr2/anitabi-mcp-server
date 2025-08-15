@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { getLiteBangumi, getPointDetails } from '../src/api'
 
-describe('api test', () => {
+describe('request test', () => {
   it('[getLiteBangumi] response success', async () => {
     const result = await getLiteBangumi('428735')
     expect(result.id).toEqual(428735)

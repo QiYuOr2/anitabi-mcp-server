@@ -1,9 +1,10 @@
 {
   "name": "@qiyuor2/anitabi-mcp-server",
+  "displayName": "Anitabi MCP Server",
   "type": "module",
   "version": "1.1.1",
   "packageManager": "pnpm@10.6.2",
-  "description": "_description_",
+  "description": "提供动画巡礼地图服务的 MCP 服务器，支持动画作品搜索和巡礼地点信息查询",
   "author": "QiYuOr2 <qiyuor2@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/QiYuOr2/mcp-anitabi-server#readme",

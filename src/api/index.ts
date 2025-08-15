@@ -1,9 +1,6 @@
 import type { z } from 'zod'
+import { ANITABI_BASE_URL, BANGUMI_BASE_URL, UA } from '../constants'
 import { BangumiSearchResponseSchema, LiteBangumiSchema, PointDetailListSchema } from './schemas'
-
-const ANITABI_BASE_URL = 'https://api.anitabi.cn/'
-const BANGUMI_BASE_URL = 'https://api.bgm.tv/'
-const UA = 'qiyuor2/anitabi-mcp-server'
 
 const headers = {
   'User-Agent': UA,
