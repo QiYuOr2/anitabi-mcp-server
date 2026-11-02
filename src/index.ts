@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 
 import type { CallToolResult } from '@modelcontextprotocol/server'
+import { dirname, join } from 'node:path'
+import process from 'node:process'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import { McpServer } from '@modelcontextprotocol/server'
+import { loadSkills } from '@modelcontextprotocol/server/ext/skills/node'
 import { serveStdio } from '@modelcontextprotocol/server/stdio'
 import { z } from 'zod'
 import pkg from '../package.json'
@@ -44,11 +48,18 @@ function mapUrl(id: string): string {
   return `${ANITABI_MAP_URL}?bangumiId=${id}`
 }
 
-export function createServer(): McpServer {
+function skillsDirectory(): string {
+  return join(dirname(fileURLToPath(import.meta.url)), '../skills')
+}
+
+export async function createServer(): Promise<McpServer> {
   const server = new McpServer({
     name: pkg.displayName,
     version: pkg.version,
   })
+
+  const skills = await loadSkills(skillsDirectory(), { strict: true })
+  skills.attach(server)
 
   server.registerTool(
     'search_animate_subject',
@@ -136,4 +147,8 @@ export function createServer(): McpServer {
   return server
 }
 
-void serveStdio(createServer)
+const invokedDirectly = process.argv[1] !== undefined
+  && import.meta.url === pathToFileURL(process.argv[1]).href
+
+if (invokedDirectly)
+  void serveStdio(createServer)

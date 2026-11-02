@@ -29,7 +29,8 @@
     "anitabi-mcp-server": "./dist/index.cjs"
   },
   "files": [
-    "dist"
+    "dist",
+    "skills"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
