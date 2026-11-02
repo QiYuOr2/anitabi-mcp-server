@@ -40,6 +40,7 @@
     "lint": "eslint",
     "prepublishOnly": "nr build",
     "release": "bumpp && pnpm publish",
+    "smoke": "tsx scripts/mcp-smoke.ts",
     "start": "tsx src/index.ts",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -48,11 +49,13 @@
   },
   "dependencies": {
     "@modelcontextprotocol/server": "catalog:",
+    "undici": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:cli",
     "@antfu/ni": "catalog:cli",
+    "@modelcontextprotocol/client": "catalog:",
     "@types/node": "catalog:types",
     "bumpp": "catalog:cli",
     "eslint": "catalog:cli",

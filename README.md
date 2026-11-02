@@ -53,6 +53,7 @@ pnpm build
 ```bash
 pnpm test
 pnpm typecheck
+pnpm build && pnpm smoke
 ANITABI_LIVE=1 pnpm exec vitest run test/live.test.ts
 ```
 

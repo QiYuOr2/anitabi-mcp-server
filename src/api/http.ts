@@ -1,4 +1,11 @@
+import { Agent, setGlobalDispatcher } from 'undici'
 import { REQUEST_TIMEOUT_MS, UA } from '../constants'
+
+setGlobalDispatcher(new Agent({
+  connect: { timeout: REQUEST_TIMEOUT_MS },
+  headersTimeout: REQUEST_TIMEOUT_MS,
+  bodyTimeout: REQUEST_TIMEOUT_MS,
+}))
 
 const headers = {
   'User-Agent': UA,
