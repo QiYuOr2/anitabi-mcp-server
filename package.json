@@ -7,12 +7,12 @@
   "description": "提供动画巡礼地图服务的 MCP 服务器，支持动画作品搜索和巡礼地点信息查询",
   "author": "QiYuOr2 <qiyuor2@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/QiYuOr2/mcp-anitabi-server#readme",
+  "homepage": "https://github.com/QiYuOr2/anitabi-mcp-server#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/QiYuOr2/mcp-anitabi-server.git"
+    "url": "git+https://github.com/QiYuOr2/anitabi-mcp-server.git"
   },
-  "bugs": "https://github.com/QiYuOr2/mcp-anitabi-server/issues",
+  "bugs": "https://github.com/QiYuOr2/anitabi-mcp-server/issues",
   "keywords": ["mcp server"],
   "sideEffects": false,
   "exports": {
