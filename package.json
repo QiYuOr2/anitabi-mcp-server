@@ -2,7 +2,7 @@
   "name": "@qiyuor2/anitabi-mcp-server",
   "displayName": "Anitabi MCP Server",
   "type": "module",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "packageManager": "pnpm@10.6.2",
   "description": "提供动画巡礼地图服务的 MCP 服务器，支持动画作品搜索和巡礼地点信息查询",
   "author": "QiYuOr2 <qiyuor2@gmail.com>",
@@ -31,6 +31,9 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild --stub",
@@ -38,31 +41,27 @@
     "prepublishOnly": "nr build",
     "release": "bumpp && pnpm publish",
     "start": "tsx src/index.ts",
-    "test": "vitest",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "catalog:",
+    "@modelcontextprotocol/server": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:cli",
     "@antfu/ni": "catalog:cli",
-    "@antfu/utils": "catalog:inlined",
     "@types/node": "catalog:types",
     "bumpp": "catalog:cli",
     "eslint": "catalog:cli",
     "lint-staged": "catalog:cli",
     "simple-git-hooks": "catalog:cli",
-    "tinyexec": "catalog:utils",
     "tsx": "catalog:cli",
     "typescript": "catalog:cli",
     "unbuild": "catalog:cli",
-    "vite": "catalog:cli",
-    "vitest": "catalog:testing",
-    "vitest-package-exports": "catalog:testing",
-    "yaml": "catalog:testing"
+    "vitest": "catalog:testing"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm i --frozen-lockfile --ignore-scripts --offline && npx lint-staged"
